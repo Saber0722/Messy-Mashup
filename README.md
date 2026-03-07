@@ -1,9 +1,5 @@
 # 🎵 Messy Mashup: Robust Music Genre Classification
 
----
-
-## 📌 Project Title
-
 **Robust Stem-Aware Music Genre Classification under Noisy Mashup Conditions**
 
 ---
