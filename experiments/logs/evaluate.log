@@ -1,0 +1,2 @@
+2026-03-21 16:56:05,066 | INFO | __script__ | Loaded checkpoint from epoch 48
+2026-03-21 16:56:06,511 | INFO | __script__ | Confusion matrix saved to /home/saber/IITM/DL-GenAI-Project/experiments/exp_002_stem_multi_branch/test_confusion_matrix.png

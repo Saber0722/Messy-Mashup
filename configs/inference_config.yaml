@@ -1,0 +1,15 @@
+inference:
+  model_checkpoint: checkpoints/best_multibranch_model.pth
+  label_encoder: checkpoints/label_encoder.pkl
+
+  batch_size: 32
+  num_workers: 4
+  device: auto              # "auto" resolves cuda > mps > cpu
+
+  test_csv: data/splits/test.csv
+  submission_path: submissions/submission.csv
+
+  # TTA: test-time augmentation (average predictions over N augmented views)
+  tta:
+    enabled: false
+    n_views: 5

@@ -1,0 +1,4 @@
+2026-03-21 16:35:59,185 | INFO | __script__ | Label encoder saved to /home/saber/IITM/DL-GenAI-Project/checkpoints/label_encoder.pkl
+2026-03-21 16:35:59,799 | INFO | __script__ | AMP enabled: True
+2026-03-21 16:46:05,299 | INFO | __script__ | Run 'python scripts/evaluate.py' for full test-set confusion matrix.
+2026-03-21 16:46:05,300 | INFO | __script__ | Artifacts saved to /home/saber/IITM/DL-GenAI-Project/experiments/exp_002_stem_multi_branch

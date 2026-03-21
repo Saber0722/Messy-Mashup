@@ -1,0 +1,41 @@
+training:
+  epochs: 50
+  batch_size: 16            # multibranch: 5 mels per sample, memory is tight
+  num_workers: 4
+  pin_memory: true
+
+  optimizer:
+    name: AdamW
+    lr: 3.0e-4
+    weight_decay: 1.0e-4
+    betas: [0.9, 0.999]
+
+  scheduler:
+    name: CosineAnnealingLR
+    T_max: 50               # matches epochs
+    eta_min: 1.0e-6
+
+  loss:
+    name: CrossEntropyLoss
+    label_smoothing: 0.1
+
+  early_stopping:
+    patience: 8
+    min_delta: 1.0e-4
+    monitor: val_loss
+
+  splits:
+    train: data/splits/train.csv
+    val: data/splits/val.csv
+    test: data/splits/test.csv
+    val_ratio: 0.15
+    test_ratio: 0.10
+
+  checkpoint:
+    save_best: true
+    save_last: true
+    metric: val_acc
+    mode: max
+
+  amp: true                 # automatic mixed precision (fp16)
+  grad_clip: 1.0

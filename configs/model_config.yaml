@@ -1,0 +1,38 @@
+model:
+  name: MultiBranchCRNN
+
+  # --- per-stem CNN encoder ---
+  stem_encoder:
+    in_channels: 1
+    channels: [32, 64, 128]   # conv1 → conv2 → conv3 out channels
+    kernel_size: 3
+    padding: 1
+    pool: [2, 2, null]        # MaxPool after conv1,2; AdaptiveAvgPool for conv3
+    adaptive_pool_size: [4, 4]
+    dropout: 0.2
+
+  # --- attention pooling over stem embeddings ---
+  attention:
+    embed_dim: 128            # matches stem_encoder output (128*4*4 → linear → 128)
+    num_heads: 4
+
+  # --- feature fusion ---
+  fusion:
+    stem_embed_dim: 128
+    mix_embed_dim: 128
+    n_stems: 4                # bass drums other vocals (mix is separate)
+    projected_dim: 256
+
+  # --- temporal CRNN ---
+  crnn:
+    input_size: 256           # fusion output
+    hidden_size: 256
+    num_layers: 2
+    bidirectional: true
+    dropout: 0.3
+
+  # --- classifier head ---
+  classifier:
+    hidden_dim: 256
+    num_classes: 10
+    dropout: 0.4

@@ -1,0 +1,42 @@
+project:
+  name: messy-mashup-genre-clf
+  root: null  # resolved at runtime via PROJECT_ROOT env or file-relative path
+  seed: 42
+
+paths:
+  data_root: data/raw/messy_mashup
+  genres_path: data/raw/messy_mashup/genres_stems
+  esc_path: data/raw/messy_mashup/ESC-50-master/audio
+  mashup_path: data/raw/messy_mashup/mashups
+  mel_path: data/processed/mel_spectrograms
+  splits_path: data/splits
+  checkpoints_dir: checkpoints
+  experiments_dir: experiments
+  logs_dir: experiments/logs
+
+genres:
+  - blues
+  - classical
+  - country
+  - disco
+  - hiphop
+  - jazz
+  - metal
+  - pop
+  - reggae
+  - rock
+
+stems:
+  - bass
+  - drums
+  - other
+  - vocals
+
+audio:
+  sample_rate: 22050
+  duration: 30          # seconds; clips longer than this are trimmed
+  n_fft: 2048
+  hop_length: 512
+  n_mels: 128
+  fmax: 8000
+  target_frames: 1300   # mel time-axis length after pad/trim

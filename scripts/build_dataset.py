@@ -1,160 +1,69 @@
-# imports
-
-import os
-import librosa
-import numpy as np
-import pandas as pd
-from tqdm import tqdm
-from sklearn.model_selection import train_test_split
+import logging
+import sys
 from pathlib import Path
 
-# basic config
+import yaml
+from rich.console import Console
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
+
+from src.features.mel_spectrogram import extract_and_save
+from src.data.dataset_builder import build_splits
+from src.utils.logger import get_logger
+from src.utils.seed import set_seed
+
+console = Console()
+logger = get_logger(__name__, log_file=str(PROJECT_ROOT / "experiments/logs/build_dataset.log"))
 
 
-PROJECT_ROOT = Path("..").resolve()
+def load_cfg(path: Path) -> dict:
+    with open(path) as f:
+        return yaml.safe_load(f)
 
-RAW_PATH = PROJECT_ROOT / "data/raw/messy_mashup"
 
-GENRES_PATH = RAW_PATH / "genres_stems"
+def main() -> None:
+    base_cfg = load_cfg(PROJECT_ROOT / "configs/base_config.yaml")
+    train_cfg = load_cfg(PROJECT_ROOT / "configs/training_config.yaml")
 
-MASHUP_PATH = RAW_PATH / "mashups"
+    set_seed(base_cfg["project"]["seed"])
 
-PROCESSED_MEL = PROJECT_ROOT / "data/processed/mel_spectrograms"
+    audio = base_cfg["audio"]
+    paths = base_cfg["paths"]
 
-SPLIT_PATH = PROJECT_ROOT / "data/splits"
+    genres_path = PROJECT_ROOT / paths["genres_path"]
+    mel_path = PROJECT_ROOT / paths["mel_path"]
+    splits_path = PROJECT_ROOT / paths["splits_path"]
 
-os.makedirs(PROCESSED_MEL, exist_ok=True)
-os.makedirs(SPLIT_PATH, exist_ok=True)
+    assert genres_path.exists(), f"genres_path not found: {genres_path}"
 
-# mel spectorgram function
-
-def compute_mel(file_path, sr=22050, n_mels=128):
-
-    y, sr = librosa.load(file_path, sr=sr)
-
-    mel = librosa.feature.melspectrogram(
-        y=y,
-        sr=sr,
-        n_mels=n_mels
+    # Step 1: Extract mel spectrograms for all stems
+    console.rule("[bold cyan]Step 1 — Mel spectrogram extraction")
+    extract_and_save(
+        genres_path=genres_path,
+        mel_save_path=mel_path,
+        sample_rate=audio["sample_rate"],
+        n_mels=audio["n_mels"],
+        n_fft=audio["n_fft"],
+        hop_length=audio["hop_length"],
+        fmax=audio["fmax"],
+        target_frames=audio["target_frames"],
+        duration=audio["duration"],
     )
 
-    mel_db = librosa.power_to_db(mel)
-
-    return mel_db
-
-# process genre stems
-
-def process_genre_stems():
-
-    records = []
-
-    genres = sorted(os.listdir(GENRES_PATH))
-
-    for genre in genres:
-
-        print(f"Processing genre: {genre}")
-        genre_path = os.path.join(GENRES_PATH, genre)
-
-        for track in tqdm(os.listdir(genre_path), desc=genre):
-
-            track_path = os.path.join(genre_path, track)
-
-            if not os.path.isdir(track_path):
-                continue
-
-            for stem in os.listdir(track_path):
-
-                if not stem.endswith(".wav"):
-                    continue
-
-                stem_path = os.path.join(track_path, stem)
-
-                try:
-
-                    mel = compute_mel(stem_path)
-
-                    save_name = f"{genre}_{track}_{stem}.npy"
-                    save_path = os.path.join(PROCESSED_MEL, save_name)
-
-                    np.save(save_path, mel)
-
-                    records.append({
-                        "file": save_name,
-                        "label": genre,
-                        "type": "stem"
-                    })
-
-                except Exception as e:
-                    print("Error:", stem_path)
-
-    return records
-
-# process mashups
-
-def process_mashups():
-
-    records = []
-
-    mashup_files = [f for f in os.listdir(MASHUP_PATH) if f.endswith(".wav")]
-
-    for file in tqdm(mashup_files, desc="Mashups"):
-
-        path = os.path.join(MASHUP_PATH, file)
-
-        try:
-
-            mel = compute_mel(path)
-
-            save_name = f"mashup_{file.replace('.wav','.npy')}"
-            save_path = os.path.join(PROCESSED_MEL, save_name)
-
-            np.save(save_path, mel)
-
-            records.append({
-                "file": save_name,
-                "label": "mashup",
-                "type": "mashup"
-            })
-
-        except Exception as e:
-            print("Error:", file)
-
-    return records
-
-# create train/val splits
-
-def create_splits(records):
-
-    df = pd.DataFrame(records)
-
-    train, val = train_test_split(
-        df,
-        test_size=0.2,
-        stratify=df["label"],
-        random_state=42
+    # Step 2: Build train/val/test splits
+    console.rule("[bold cyan]Step 2 — Building splits")
+    split_cfg = train_cfg["training"]["splits"]
+    build_splits(
+        mel_path=mel_path,
+        splits_path=splits_path,
+        val_ratio=split_cfg["val_ratio"],
+        test_ratio=split_cfg["test_ratio"],
+        seed=base_cfg["project"]["seed"],
     )
 
-    train.to_csv(os.path.join(SPLIT_PATH, "train.csv"), index=False)
-    val.to_csv(os.path.join(SPLIT_PATH, "val.csv"), index=False)
+    console.rule("[bold green]Dataset build complete")
 
-    print("Saved splits.")
-
-# main function
-
-def main():
-
-    print("Processing genre stems...")
-    stem_records = process_genre_stems()
-
-    print("Processing mashups...")
-    mashup_records = process_mashups()
-
-    records = stem_records + mashup_records
-
-    print("Creating dataset splits...")
-    create_splits(records)
-
-    print("Dataset build complete.")
 
 if __name__ == "__main__":
     main()
