@@ -1,0 +1,417 @@
+_name_or_path:
+    value: MIT/ast-finetuned-audioset-10-10-0.4593
+_wandb:
+    value:
+        cli_version: 0.25.1
+        e:
+            lzrz3m9ybzubk3bz3ntf9v2ciet7423a:
+                codePath: train_mix_transformer.py
+                codePathLocal: train_mix_transformer.py
+                cpu_count: 10
+                cpu_count_logical: 16
+                cudaVersion: "13.1"
+                disk:
+                    /:
+                        total: "980696621056"
+                        used: "818034364416"
+                email: 24f1001512@ds.study.iitm.ac.in
+                executable: /home/saber/IITM/DL-GenAI-Project/.venv/bin/python3
+                git:
+                    commit: 07c44e5035bcd44bbfb8134876a0c47c3495d43a
+                    remote: git@github.com:24f1001512/Messy-Mashup
+                gpu: NVIDIA GeForce RTX 4060 Laptop GPU
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ada
+                      cudaCores: 3072
+                      memoryTotal: "8585740288"
+                      name: NVIDIA GeForce RTX 4060 Laptop GPU
+                      uuid: GPU-0239954e-22dd-0ec8-c319-2bad7747c41c
+                host: archpc
+                memory:
+                    total: "16369819648"
+                os: Linux-6.18.9-arch1-2-x86_64-with-glibc2.43
+                program: /home/saber/IITM/DL-GenAI-Project/train_mix_transformer.py
+                python: CPython 3.11.14
+                root: /home/saber/IITM/DL-GenAI-Project
+                startedAt: "2026-03-27T16:54:41.039394Z"
+                writerId: lzrz3m9ybzubk3bz3ntf9v2ciet7423a
+        m:
+            - "1": train/global_step
+              "6":
+                - 3
+              "7": []
+            - "2": '*'
+              "5": 1
+              "6":
+                - 1
+              "7": []
+        python_version: 3.11.14
+        t:
+            "1":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 51
+                - 53
+                - 71
+            "2":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 51
+                - 53
+                - 71
+            "3":
+                - 2
+                - 7
+                - 13
+                - 16
+                - 19
+                - 62
+                - 66
+            "4": 3.11.14
+            "5": 0.25.1
+            "6": 5.3.0
+            "9":
+                "1": transformers_trainer
+            "12": 0.25.1
+            "13": linux-x86_64
+accelerator_config:
+    value:
+        dispatch_batches: null
+        even_batches: true
+        gradient_accumulation_kwargs: null
+        non_blocking: false
+        split_batches: false
+        use_seedable_sampler: true
+adam_beta1:
+    value: 0.9
+adam_beta2:
+    value: 0.999
+adam_epsilon:
+    value: 1e-08
+architectures:
+    value:
+        - ASTForAudioClassification
+attention_probs_dropout_prob:
+    value: 0
+auto_find_batch_size:
+    value: false
+average_tokens_across_devices:
+    value: true
+batch_eval_metrics:
+    value: false
+batch_size:
+    value: 2
+bf16:
+    value: false
+bf16_full_eval:
+    value: false
+chunk_size_feed_forward:
+    value: 0
+cross_mix_prob:
+    value: 0.8
+data_seed:
+    value: null
+dataloader_drop_last:
+    value: false
+dataloader_num_workers:
+    value: 4
+dataloader_persistent_workers:
+    value: false
+dataloader_pin_memory:
+    value: true
+dataloader_prefetch_factor:
+    value: null
+ddp_backend:
+    value: null
+ddp_broadcast_buffers:
+    value: null
+ddp_bucket_cap_mb:
+    value: null
+ddp_find_unused_parameters:
+    value: null
+ddp_timeout:
+    value: 1800
+debug:
+    value: []
+deepspeed:
+    value: null
+disable_tqdm:
+    value: false
+do_eval:
+    value: true
+do_predict:
+    value: false
+do_train:
+    value: false
+dtype:
+    value: float32
+duration_sec:
+    value: 10
+enable_jit_checkpoint:
+    value: false
+epochs:
+    value: 50
+eval_accumulation_steps:
+    value: null
+eval_delay:
+    value: 0
+eval_do_concat_batches:
+    value: true
+eval_on_start:
+    value: false
+eval_steps:
+    value: null
+eval_strategy:
+    value: epoch
+eval_use_gather_object:
+    value: false
+fp16:
+    value: true
+fp16_full_eval:
+    value: false
+frequency_stride:
+    value: 10
+fsdp:
+    value: []
+fsdp_config:
+    value:
+        min_num_params: 0
+        xla: false
+        xla_fsdp_grad_ckpt: false
+        xla_fsdp_v2: false
+full_determinism:
+    value: false
+grad_accum:
+    value: 4
+gradient_accumulation_steps:
+    value: 4
+gradient_checkpointing:
+    value: true
+gradient_checkpointing_kwargs:
+    value: null
+greater_is_better:
+    value: true
+hidden_act:
+    value: gelu
+hidden_dropout_prob:
+    value: 0
+hidden_size:
+    value: 768
+hub_always_push:
+    value: false
+hub_model_id:
+    value: null
+hub_private_repo:
+    value: null
+hub_revision:
+    value: null
+hub_strategy:
+    value: every_save
+hub_token:
+    value: <HUB_TOKEN>
+id2label:
+    value:
+        "0": blues
+        "1": classical
+        "2": country
+        "3": disco
+        "4": hiphop
+        "5": jazz
+        "6": metal
+        "7": pop
+        "8": reggae
+        "9": rock
+ignore_data_skip:
+    value: false
+include_for_metrics:
+    value: []
+include_num_input_tokens_seen:
+    value: "no"
+initializer_range:
+    value: 0.02
+intermediate_size:
+    value: 3072
+is_encoder_decoder:
+    value: false
+label_names:
+    value: null
+label_smoothing_factor:
+    value: 0
+label2id:
+    value:
+        blues: 0
+        classical: 1
+        country: 2
+        disco: 3
+        hiphop: 4
+        jazz: 5
+        metal: 6
+        pop: 7
+        reggae: 8
+        rock: 9
+layer_norm_eps:
+    value: 1e-12
+learning_rate:
+    value: 2e-05
+length_column_name:
+    value: length
+liger_kernel_config:
+    value: null
+load_best_model_at_end:
+    value: true
+local_rank:
+    value: -1
+log_level:
+    value: passive
+log_level_replica:
+    value: warning
+log_on_each_node:
+    value: true
+logging_dir:
+    value: null
+logging_first_step:
+    value: false
+logging_nan_inf_filter:
+    value: true
+logging_steps:
+    value: 10
+logging_strategy:
+    value: steps
+lr:
+    value: 2e-05
+lr_scheduler_kwargs:
+    value: null
+lr_scheduler_type:
+    value: linear
+max_grad_norm:
+    value: 1
+max_length:
+    value: 1024
+max_steps:
+    value: -1
+metric_for_best_model:
+    value: f1
+model:
+    value: MIT/ast-finetuned-audioset-10-10-0.4593
+model/num_parameters:
+    value: 86196490
+model_type:
+    value: audio-spectrogram-transformer
+neftune_noise_alpha:
+    value: null
+noise_prob:
+    value: 0.8
+num_attention_heads:
+    value: 12
+num_hidden_layers:
+    value: 12
+num_mel_bins:
+    value: 128
+num_train_epochs:
+    value: 50
+optim:
+    value: adamw_torch_fused
+optim_args:
+    value: null
+optim_target_modules:
+    value: null
+output_attentions:
+    value: false
+output_dir:
+    value: /home/saber/IITM/DL-GenAI-Project/checkpoints_transformer_augmented
+output_hidden_states:
+    value: false
+parallelism_config:
+    value: null
+patch_size:
+    value: 16
+patience:
+    value: 7
+per_device_eval_batch_size:
+    value: 2
+per_device_train_batch_size:
+    value: 2
+prediction_loss_only:
+    value: false
+problem_type:
+    value: null
+project:
+    value: huggingface
+push_to_hub:
+    value: false
+qkv_bias:
+    value: true
+remove_unused_columns:
+    value: false
+report_to:
+    value:
+        - wandb
+restore_callback_states_from_checkpoint:
+    value: false
+resume_from_checkpoint:
+    value: null
+return_dict:
+    value: true
+run_name:
+    value: null
+save_on_each_node:
+    value: false
+save_only_model:
+    value: false
+save_steps:
+    value: 500
+save_strategy:
+    value: epoch
+save_total_limit:
+    value: 2
+seed:
+    value: 42
+skip_memory_metrics:
+    value: true
+snr_range:
+    value:
+        - 5
+        - 20
+tempo_perturb:
+    value: true
+tempo_range:
+    value:
+        - 0.85
+        - 1.15
+tf32:
+    value: null
+time_stride:
+    value: 10
+torch_compile:
+    value: false
+torch_compile_backend:
+    value: null
+torch_compile_mode:
+    value: null
+torch_empty_cache_steps:
+    value: null
+trackio_space_id:
+    value: trackio
+train_sampling_strategy:
+    value: random
+transformers_version:
+    value: 5.3.0
+use_cache:
+    value: false
+use_cpu:
+    value: false
+use_liger_kernel:
+    value: false
+warmup_ratio:
+    value: null
+warmup_steps:
+    value: 0
+weight_decay:
+    value: 0.01

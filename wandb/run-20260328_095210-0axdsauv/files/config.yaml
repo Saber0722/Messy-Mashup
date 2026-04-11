@@ -1,0 +1,98 @@
+_wandb:
+    value:
+        cli_version: 0.25.1
+        e:
+            oexwudeab1letab4cj6hvt6hfoc548p2:
+                args:
+                    - --seed
+                    - "42"
+                codePath: train_optimized_transformer.py
+                codePathLocal: train_optimized_transformer.py
+                cpu_count: 10
+                cpu_count_logical: 16
+                cudaVersion: "13.1"
+                disk:
+                    /:
+                        total: "980696621056"
+                        used: "821200105472"
+                email: 24f1001512@ds.study.iitm.ac.in
+                executable: /home/saber/IITM/DL-GenAI-Project/.venv/bin/python3
+                git:
+                    commit: 07c44e5035bcd44bbfb8134876a0c47c3495d43a
+                    remote: git@github.com:24f1001512/Messy-Mashup
+                gpu: NVIDIA GeForce RTX 4060 Laptop GPU
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ada
+                      cudaCores: 3072
+                      memoryTotal: "8585740288"
+                      name: NVIDIA GeForce RTX 4060 Laptop GPU
+                      uuid: GPU-0239954e-22dd-0ec8-c319-2bad7747c41c
+                host: archpc
+                memory:
+                    total: "16369819648"
+                os: Linux-6.18.9-arch1-2-x86_64-with-glibc2.43
+                program: /home/saber/IITM/DL-GenAI-Project/train_optimized_transformer.py
+                python: CPython 3.11.14
+                root: /home/saber/IITM/DL-GenAI-Project
+                startedAt: "2026-03-28T04:22:10.184269Z"
+                writerId: oexwudeab1letab4cj6hvt6hfoc548p2
+        m: []
+        python_version: 3.11.14
+        t:
+            "1":
+                - 1
+                - 5
+                - 11
+                - 49
+                - 53
+                - 71
+            "2":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 53
+                - 71
+            "3":
+                - 2
+                - 13
+                - 16
+            "4": 3.11.14
+            "5": 0.25.1
+            "6": 5.3.0
+            "12": 0.25.1
+            "13": linux-x86_64
+augment_multiplier:
+    value: 8
+batch_size:
+    value: 4
+epochs:
+    value: 60
+label_smoothing:
+    value: 0.1
+lr:
+    value: 3e-05
+model:
+    value: MIT/ast-finetuned-audioset-10-10-0.4593
+noise_prob:
+    value: 0.8
+patience:
+    value: 10
+pitch_semitones:
+    value:
+        - -2
+        - 2
+seed:
+    value: 42
+stem_drop_prob:
+    value: 0.3
+tempo_range:
+    value:
+        - 0.85
+        - 1.15
+tta_runs:
+    value: 5
+unfreeze_epoch:
+    value: 5

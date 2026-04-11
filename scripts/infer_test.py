@@ -1,83 +1,49 @@
-"""
-Generate submission.csv from the test set.
-
-Run from project root:
-    python scripts/infer_test.py
-"""
-
-import pickle
-import sys
+"""Write the final submission CSV."""
+import logging
 from pathlib import Path
+import pandas as pd
 
-import torch
-import yaml
-from rich.console import Console
+logger = logging.getLogger(__name__)
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(PROJECT_ROOT))
-
-from src.inference.predict import run_inference
-from src.inference.submission_writer import write_submission
-from src.models.messy_mashup_model import build_model
-from src.utils.logger import get_logger
-
-console = Console()
-logger = get_logger(__name__, log_file=str(PROJECT_ROOT / "experiments/logs/infer_test.log"))
+ID_DIGITS = 4  # zero-padding width → 0001, 0002, …
 
 
-def load_cfg(path: Path) -> dict:
-    with open(path) as f:
-        return yaml.safe_load(f)
+def write_submission(
+    predictions: list[tuple[str, str]],
+    submission_path: str | Path,
+    sample_submission_path: str | Path | None = None,
+) -> None:
+    """
+    Write predictions to *submission_path* in the required (id, genre) format.
 
+    Args:
+        predictions:            list of (file_base, predicted_label) tuples
+                                produced by run_inference().
+        submission_path:        where to write the final CSV.
+        sample_submission_path: optional path to sample_submission.csv —
+                                used only to verify row count alignment.
+    """
+    submission_path = Path(submission_path)
+    submission_path.parent.mkdir(parents=True, exist_ok=True)
 
-def main() -> None:
-    base_cfg = load_cfg(PROJECT_ROOT / "configs/base_config.yaml")
-    model_cfg = load_cfg(PROJECT_ROOT / "configs/model_config.yaml")
-    inf_cfg = load_cfg(PROJECT_ROOT / "configs/inference_config.yaml")["inference"]
+    # Build output dataframe: drop file_base, add zero-padded sequential id
+    out_df = pd.DataFrame({
+        "id":    [str(i).zfill(ID_DIGITS) for i in range(1, len(predictions) + 1)],
+        "genre": [label for _, label in predictions],
+    })
 
-    paths = base_cfg["paths"]
-    mel_path = PROJECT_ROOT / paths["mel_path"]
-    splits_path = PROJECT_ROOT / paths["splits_path"]
-    checkpoint_path = PROJECT_ROOT / inf_cfg["model_checkpoint"]
-    le_path = PROJECT_ROOT / inf_cfg["label_encoder"]
+    # Optional: verify alignment with sample_submission
+    if sample_submission_path is not None:
+        sample = pd.read_csv(sample_submission_path)
+        if len(sample) != len(out_df):
+            logger.warning(
+                f"Row count mismatch: sample_submission has {len(sample)} rows "
+                f"but we have {len(out_df)} predictions."
+            )
+        else:
+            logger.info(f"Row count matches sample_submission: {len(out_df)} rows ✓")
 
-    assert checkpoint_path.exists(), f"Checkpoint not found: {checkpoint_path}"
-    assert le_path.exists(), f"Label encoder not found: {le_path}"
-
-    cfg_device = inf_cfg.get("device", "auto")
-    device = (
-        torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        if cfg_device == "auto" else torch.device(cfg_device)
-    )
-
-    with open(le_path, "rb") as f:
-        le = pickle.load(f)
-    num_classes = len(le.classes_)
-
-    ckpt = torch.load(checkpoint_path, map_location=device, weights_only=False)
-    model = build_model(num_classes=num_classes, model_cfg=model_cfg["model"])
-    model.load_state_dict(ckpt["model_state_dict"])
-    model = model.to(device)
-
-    predictions = run_inference(
-        model=model,
-        test_csv=splits_path / "test.csv",
-        mel_path=mel_path,
-        label_encoder_path=le_path,
-        device=device,
-        batch_size=inf_cfg["batch_size"],
-        num_workers=inf_cfg["num_workers"],
-    )
-
-    sample_sub = PROJECT_ROOT / "data/raw/messy_mashup/sample_submission.csv"
-    write_submission(
-        predictions,
-        submission_path=PROJECT_ROOT / inf_cfg["submission_path"],
-        sample_submission_path=sample_sub if sample_sub.exists() else None,
-    )
-
-    console.print(f"[bold green]Submission written:[/bold green] {inf_cfg['submission_path']}")
-
-
-if __name__ == "__main__":
-    main()
+    out_df.to_csv(submission_path, index=False)
+    logger.info(f"Submission written to {submission_path} ({len(out_df)} rows)")
+    logger.info(f"ID range: {out_df['id'].iloc[0]} → {out_df['id'].iloc[-1]}")
+    logger.info(f"Genre distribution:\n{out_df['genre'].value_counts().to_string()}")

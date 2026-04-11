@@ -1,0 +1,1 @@
+{"epoch":45,"_timestamp":1.7746487360031307e+09,"_step":45,"tta_val_f1":1,"train_f1":0.9956937631298921,"val_acc":0.96,"val_loss":0.6124216437339782,"tta_val_acc":1,"_runtime":14947,"val_f1":0.9597729171413383,"train_loss":0.5118267779548963,"_wandb":{"runtime":14947}}

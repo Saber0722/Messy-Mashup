@@ -1,0 +1,126 @@
+[34m╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮[0m
+[34m│[0m [3m                      Training Configuration                      [0m                                                                                                   [34m│[0m
+[34m│[0m ┏━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓                                                                                                   [34m│[0m
+[34m│[0m ┃[1;35m [0m[1;35mParameter           [0m[1;35m [0m┃[1;35m [0m[1;35m                                  Value[0m[1;35m [0m┃                                                                                                   [34m│[0m
+[34m│[0m ┡━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩                                                                                                   [34m│[0m
+[34m│[0m │[2m [0m[2mModel               [0m[2m [0m│ MIT/ast-finetuned-audioset-10-10-0.4593 │                                                                                                   [34m│[0m
+[34m│[0m │[2m [0m[2mSample Rate         [0m[2m [0m│                                   16000 │                                                                                                   [34m│[0m
+[34m│[0m │[2m [0m[2mDuration (sec)      [0m[2m [0m│                                      10 │                                                                                                   [34m│[0m
+[34m│[0m │[2m [0m[2mBatch Size          [0m[2m [0m│                                       2 │                                                                                                   [34m│[0m
+[34m│[0m │[2m [0m[2mGrad Accum Steps    [0m[2m [0m│                                       4 │                                                                                                   [34m│[0m
+[34m│[0m │[2m [0m[2mEffective Batch Size[0m[2m [0m│                                       8 │                                                                                                   [34m│[0m
+[34m│[0m │[2m [0m[2mLearning Rate       [0m[2m [0m│                                2.00e-05 │                                                                                                   [34m│[0m
+[34m│[0m │[2m [0m[2mWeight Decay        [0m[2m [0m│                                1.00e-02 │                                                                                                   [34m│[0m
+[34m│[0m │[2m [0m[2mNum Epochs          [0m[2m [0m│                                      50 │                                                                                                   [34m│[0m
+[34m│[0m │[2m [0m[2mPatience            [0m[2m [0m│                                       7 │                                                                                                   [34m│[0m
+[34m│[0m │[2m [0m[2mCross-Mix Prob      [0m[2m [0m│                                    0.80 │                                                                                                   [34m│[0m
+[34m│[0m │[2m [0m[2mTempo Perturb       [0m[2m [0m│                                    True │                                                                                                   [34m│[0m
+[34m│[0m │[2m [0m[2mTempo Range         [0m[2m [0m│                             0.85 - 1.15 │                                                                                                   [34m│[0m
+[34m│[0m │[2m [0m[2mNoise Prob          [0m[2m [0m│                                    0.80 │                                                                                                   [34m│[0m
+[34m│[0m │[2m [0m[2mNoise SNR Range     [0m[2m [0m│                           5.0 - 20.0 dB │                                                                                                   [34m│[0m
+[34m│[0m └──────────────────────┴─────────────────────────────────────────┘                                                                                                   [34m│[0m
+[34m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+[92m───────────────────────────────────────────────────────────────────────── [0m[1;36mBuilding stem index[0m[92m ──────────────────────────────────────────────────────────────────────────[0m
+Noise files available: [1;36m2000[0m
+Total tracks: [1;36m1000[0m
+Genres [1m([0m[1;36m10[0m[1m)[0m: [1m[[0m[32m'blues'[0m, [32m'classical'[0m, [32m'country'[0m, [32m'disco'[0m, [32m'hiphop'[0m, [32m'jazz'[0m, [32m'metal'[0m, [32m'pop'[0m, [32m'reggae'[0m, [32m'rock'[0m[1m][0m
+Train: [1;36m900[0m  Val: [1;36m100[0m
+[92m──────────────────────────────────────────────────────────────────────────── [0m[1;36mLoading model[0m[92m ─────────────────────────────────────────────────────────────────────────────[0m
+2026-03-27 22:54:28,262 - INFO - HTTP Request: HEAD https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-03-27 22:54:28,263 - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-03-27 22:54:28,543 - INFO - HTTP Request: HEAD https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-27 22:54:28,554 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/MIT/ast-finetuned-audioset-10-10-0.4593/f826b80d28226b62986cc218e5cec390b1096902/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-03-27 22:54:28,949 - INFO - HTTP Request: HEAD https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-03-27 22:54:29,258 - INFO - HTTP Request: HEAD https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-27 22:54:29,267 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/MIT/ast-finetuned-audioset-10-10-0.4593/f826b80d28226b62986cc218e5cec390b1096902/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-03-27 22:54:29,484 - INFO - HTTP Request: HEAD https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-27 22:54:29,492 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/MIT/ast-finetuned-audioset-10-10-0.4593/f826b80d28226b62986cc218e5cec390b1096902/config.json "HTTP/1.1 200 OK"
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████| 203/203 [00:00<00:00, 6587.52it/s]
+[1mASTForAudioClassification LOAD REPORT[0m from: MIT/ast-finetuned-audioset-10-10-0.4593
+Key                     | Status   |
+------------------------+----------+------------------------------------------------------------------------------------------
+classifier.dense.weight | [33mMISMATCH[0m | Reinit due to size mismatch - ckpt: torch.Size([527, 768]) vs model:torch.Size([10, 768])
+classifier.dense.bias   | [33mMISMATCH[0m | Reinit due to size mismatch - ckpt: torch.Size([527]) vs model:torch.Size([10])
+
+[3mNotes:
+- [33mMISMATCH[0m[3m	:ckpt weights were loaded, but they did not match the original empty weight shapes.[0m
+[92m──────────────────────────────────────────────────────────────────────── [0m[1;36mPreprocessing datasets[0m[92m ────────────────────────────────────────────────────────────────────────[0m
+[?25l[?25h
+Traceback (most recent call last):
+  File "/home/saber/IITM/DL-GenAI-Project/train_mix_transformer.py", line 354, in main
+    task = progress.add_task("Preprocessing Train...", total=len(train_hf))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/progress.py", line 1640, in add_task
+    self.refresh()
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/progress.py", line 1550, in refresh
+    self.live.refresh()
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/live.py", line 247, in refresh
+    self._live_render.set_renderable(self.renderable)
+                                     ^^^^^^^^^^^^^^^
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/live.py", line 225, in renderable
+    renderable = Group(*[live.get_renderable() for live in live_stack])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/live.py", line 225, in <listcomp>
+    renderable = Group(*[live.get_renderable() for live in live_stack])
+                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/live.py", line 105, in get_renderable
+    self._get_renderable()
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/progress.py", line 1554, in get_renderable
+    renderable = Group(*self.get_renderables())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/progress.py", line 1559, in get_renderables
+    table = self.make_tasks_table(self.tasks)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/progress.py", line 1583, in make_tasks_table
+    table.add_row(
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/progress.py", line 1588, in <genexpr>
+    else column(task)
+         ^^^^^^^^^^^^
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/progress.py", line 540, in __call__
+    renderable = self.render(task)
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/progress.py", line 636, in render
+    _text = self.text_format.format(task=task)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Single '}' encountered in format string
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/saber/IITM/DL-GenAI-Project/train_mix_transformer.py", line 425, in <module>
+    main()
+  File "/home/saber/IITM/DL-GenAI-Project/train_mix_transformer.py", line 348, in main
+    with Progress(
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/progress.py", line 1190, in __exit__
+    self.stop()
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/progress.py", line 1176, in stop
+    self.live.stop()
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/live.py", line 165, in stop
+    self.refresh()
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/live.py", line 247, in refresh
+    self._live_render.set_renderable(self.renderable)
+                                     ^^^^^^^^^^^^^^^
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/live.py", line 227, in renderable
+    renderable = self.get_renderable()
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/live.py", line 105, in get_renderable
+    self._get_renderable()
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/progress.py", line 1554, in get_renderable
+    renderable = Group(*self.get_renderables())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/progress.py", line 1559, in get_renderables
+    table = self.make_tasks_table(self.tasks)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/progress.py", line 1583, in make_tasks_table
+    table.add_row(
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/progress.py", line 1588, in <genexpr>
+    else column(task)
+         ^^^^^^^^^^^^
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/progress.py", line 540, in __call__
+    renderable = self.render(task)
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/saber/IITM/DL-GenAI-Project/.venv/lib/python3.11/site-packages/rich/progress.py", line 636, in render
+    _text = self.text_format.format(task=task)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Single '}' encountered in format string

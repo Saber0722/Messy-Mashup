@@ -1,0 +1,24 @@
+2026-03-27 23:19:46,121 INFO    MainThread:266570 [wandb_setup.py:_flush():81] Current SDK version is 0.25.1
+2026-03-27 23:19:46,121 INFO    MainThread:266570 [wandb_setup.py:_flush():81] Configure stats pid to 266570
+2026-03-27 23:19:46,121 INFO    MainThread:266570 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2026-03-27 23:19:46,121 INFO    MainThread:266570 [wandb_init.py:setup_run_log_directory():717] Logging user logs to /home/saber/IITM/DL-GenAI-Project/wandb/run-20260327_231946-h6kdidot/logs/debug.log
+2026-03-27 23:19:46,121 INFO    MainThread:266570 [wandb_init.py:setup_run_log_directory():718] Logging internal logs to /home/saber/IITM/DL-GenAI-Project/wandb/run-20260327_231946-h6kdidot/logs/debug-internal.log
+2026-03-27 23:19:46,121 INFO    MainThread:266570 [wandb_init.py:init():844] calling init triggers
+2026-03-27 23:19:46,121 INFO    MainThread:266570 [wandb_init.py:init():849] wandb.init called with sweep_config: {}
+config: {'model': 'MIT/ast-finetuned-audioset-10-10-0.4593', 'augment_multiplier': 8, 'cross_mix_prob': 0.9, 'tempo_perturb': True, 'noise_prob': 0.8, 'pitch_shift': True, 'tta_runs': 5, 'unfreeze_epoch': 5, 'label_smoothing': 0.1, 'lr': 3e-05, 'epochs': 60, 'patience': 10, 'batch_size': 4, '_wandb': {}}
+2026-03-27 23:19:46,121 INFO    MainThread:266570 [wandb_init.py:init():892] starting backend
+2026-03-27 23:19:46,337 INFO    MainThread:266570 [wandb_init.py:init():895] sending inform_init request
+2026-03-27 23:19:46,341 INFO    MainThread:266570 [wandb_init.py:init():903] backend started and connected
+2026-03-27 23:19:46,342 INFO    MainThread:266570 [wandb_init.py:init():973] updated telemetry
+2026-03-27 23:19:46,344 INFO    MainThread:266570 [wandb_init.py:init():997] communicating run to backend with 90.0 second timeout
+2026-03-27 23:19:48,123 INFO    MainThread:266570 [wandb_init.py:init():1042] starting run threads in backend
+2026-03-27 23:19:48,171 INFO    MainThread:266570 [wandb_run.py:_console_start():2524] atexit reg
+2026-03-27 23:19:48,171 INFO    MainThread:266570 [wandb_run.py:_redirect():2373] redirect: wrap_raw
+2026-03-27 23:19:48,171 INFO    MainThread:266570 [wandb_run.py:_redirect():2442] Wrapping output streams.
+2026-03-27 23:19:48,171 INFO    MainThread:266570 [wandb_run.py:_redirect():2465] Redirects installed.
+2026-03-27 23:19:48,172 INFO    MainThread:266570 [wandb_init.py:init():1082] run started, returning control to user process
+2026-03-28 03:28:56,006 INFO    MainThread:266570 [wandb_run.py:_finish():2291] finishing run 24f1001512-indian-institute-of-technology-madras/messy-mashup-transformer/h6kdidot
+2026-03-28 03:28:56,029 INFO    MainThread:266570 [wandb_run.py:_atexit_cleanup():2490] got exitcode: 0
+2026-03-28 03:28:56,029 INFO    MainThread:266570 [wandb_run.py:_restore():2472] restore
+2026-03-28 03:28:56,029 INFO    MainThread:266570 [wandb_run.py:_restore():2478] restore done
+2026-03-28 03:28:59,766 INFO    MainThread:266570 [wandb_run.py:_footer_sync_info():3868] logging synced files

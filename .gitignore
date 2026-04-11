@@ -7,3 +7,21 @@ checkpoints/
 submissions/
 
 __pycache__/
+
+
+checkopoints_*
+
+checkpoints_finetune_mix_all_data
+checkpoints_finetune_mix_enhanced
+checkpoints_mix
+checkpoints_mix_retrained
+checkpoints_transformer
+checkpoints_transformer_90_10_es_wandb_rich
+checkpoints_transformer_augmented
+checkpoints_transformer_auto
+checkpoints_transformer_auto_fixed
+checkpoints_transformer_final
+checkpoints_transformer_final_attempt
+checkpoints_transformer_minimal
+checkpoints_transformer_v2
+checkpoints_transformer_v3

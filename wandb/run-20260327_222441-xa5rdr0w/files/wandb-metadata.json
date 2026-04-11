@@ -1,0 +1,40 @@
+{
+  "os": "Linux-6.18.9-arch1-2-x86_64-with-glibc2.43",
+  "python": "CPython 3.11.14",
+  "startedAt": "2026-03-27T16:54:41.039394Z",
+  "program": "/home/saber/IITM/DL-GenAI-Project/train_mix_transformer.py",
+  "codePath": "train_mix_transformer.py",
+  "codePathLocal": "train_mix_transformer.py",
+  "git": {
+    "remote": "git@github.com:24f1001512/Messy-Mashup",
+    "commit": "07c44e5035bcd44bbfb8134876a0c47c3495d43a"
+  },
+  "email": "24f1001512@ds.study.iitm.ac.in",
+  "root": "/home/saber/IITM/DL-GenAI-Project",
+  "host": "archpc",
+  "executable": "/home/saber/IITM/DL-GenAI-Project/.venv/bin/python3",
+  "cpu_count": 10,
+  "cpu_count_logical": 16,
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "980696621056",
+      "used": "818034364416"
+    }
+  },
+  "memory": {
+    "total": "16369819648"
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "memoryTotal": "8585740288",
+      "cudaCores": 3072,
+      "architecture": "Ada",
+      "uuid": "GPU-0239954e-22dd-0ec8-c319-2bad7747c41c"
+    }
+  ],
+  "cudaVersion": "13.1",
+  "writerId": "lzrz3m9ybzubk3bz3ntf9v2ciet7423a"
+}
